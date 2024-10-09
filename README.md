@@ -16,8 +16,10 @@ For example if you use the same computer for your personal projects and therefor
 This is like logging in, just in a slightly more complicated way.
 To start you should make a config folder for `ssh`.
 - Linux or MacOs
+
     `mkdir ~/.ssh`
 - Windows
+
     `mkdir ~/AppData/.ssh`
 
 ### Generate keys
