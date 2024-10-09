@@ -15,15 +15,32 @@ For example if you use the same computer for your personal projects and therefor
 ## Setting up SSH for authorization
 This is like logging in, just in a slightly more complicated way.
 To start you should make a config folder for `ssh`.
-- Linux or MacOs
+- Linux or MacOS
 
     `mkdir ~/.ssh`
 - Windows
 
     `mkdir ~/AppData/.ssh`
 
-### Generate keys
+And the to navigate to the folder:
+- Linux or MacOs
 
+    `cd ~/.ssh`
+- Windows
+
+    `cd ~/AppData/.ssh`
+
+### Generate keys
+Some keys need to be generated in order to verify user identity.
+
+This is done with the command:
+
+`ssh-keygen -t rsa -C "email_github_personal@mail.com" -f "personal"`
+`ssh-keygen -t rsa -C "email_github_work@mail.com" -f "work"`
+
+After the keys are generated the following files will be in the directory:
+- `personal` and `personal.pub`
+- `work` and `work.pub`
 
 
 
