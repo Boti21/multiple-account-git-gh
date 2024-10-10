@@ -1,7 +1,3 @@
-![This picture here](testmd.png "the title of this pic")
-
-
-
 # How to use multiple GitHub accounts on the same computer using SSH
 
 
@@ -113,4 +109,4 @@ git config --local user.name "work_github_username" && git config --local user.e
 This is to have commits that are attributed your account, therefore, each line should be run in the repositories that your respective GitHub accounts have access to. These commands can be made into an `alias` for convenience, my personal `alias` is `gcp` (git config personal) for example.
 
 
-If there are any problems with this tutorial please alert me to them!
+### If there are any problems with this tutorial please alert me to them!
