@@ -15,7 +15,9 @@ This is like logging in, just in a slightly more complicated way.
 To start you should make a config folder for `ssh`.
 - Linux or MacOS
 
-    `mkdir ~/.ssh`
+```
+    mkdir ~/.ssh
+```
 - Windows
 
     `mkdir ~/AppData/.ssh`
