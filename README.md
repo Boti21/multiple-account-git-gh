@@ -20,24 +20,32 @@ To start you should make a config folder for `ssh`.
 ```
 - Windows
 
-    `mkdir ~/AppData/.ssh`
+```
+    mkdir ~/AppData/.ssh
+```
 
 And the to navigate to the folder:
 - Linux or MacOs
 
-    `cd ~/.ssh`
+```
+    cd ~/.ssh
+```
 - Windows
 
-    `cd ~/AppData/.ssh`
+```
+    cd ~/AppData/.ssh
+```
 
 ### Generate keys
 Some keys need to be generated in order to verify user identity.
 
 This is done with the commands:
 
-`ssh-keygen -t rsa -C "email_github_personal@mail.com" -f "personal"`
+```
+ssh-keygen -t rsa -C "email_github_personal@mail.com" -f "personal"
 
-`ssh-keygen -t rsa -C "email_github_work@mail.com" -f "work"`
+ssh-keygen -t rsa -C "email_github_work@mail.com" -f "work"
+```
 
 Here `personal` and `work` can be named anything to distinguish them and will be the name of the files holding the keys.
 
@@ -60,7 +68,9 @@ The public key needs to be added to GitHub, so that it will recognize the user. 
 
 Now make an `ssh` config file:
 
-`touch ~/.ssh/config`
+```
+touch ~/.ssh/config
+```
 
 Into it, the profiles should be put:
 
