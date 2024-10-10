@@ -36,11 +36,31 @@ Some keys need to be generated in order to verify user identity.
 This is done with the command:
 
 `ssh-keygen -t rsa -C "email_github_personal@mail.com" -f "personal"`
+
 `ssh-keygen -t rsa -C "email_github_work@mail.com" -f "work"`
 
-After the keys are generated the following files will be in the directory:
+Here `personal` and `work` can be named anything to distinguish them and will be the name of the files holding the keys.
+
+After the keys are generated the directory will look like this:
 - `personal` and `personal.pub`
 - `work` and `work.pub`
 
+Now make an `ssh` config file:
+
+`~/.ssh/config`
+
+Into it, the profiles should put:
+
+`# Personal`
+`Host personal`
+    `HostName github.com`
+    `User git`
+    `IdentityFile ~/.ssh/personal`
+
+`# Work`
+`Host work`
+    `HostName github.com`
+    `User git`
+    `IdentityFile ~/.ssh/work`
 
 
