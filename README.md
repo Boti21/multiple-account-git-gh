@@ -8,7 +8,7 @@
 ### Why would anyone want to this?
 For example if you use the same computer for your personal projects and therefore, account, as well as, for work projects, where you have to use an account associated with an organization, having the ability to easily toggle between accounts can be a great time-saver. At the very least, that was my motivation.
 
-
+---
 
 ## Setting up SSH for authorization
 This is like logging in, just in a slightly more complicated way.
@@ -36,6 +36,8 @@ And the to navigate to the folder:
     cd ~/AppData/.ssh
 ```
 
+---
+
 ### Generate keys
 Some keys need to be generated in order to verify user identity.
 
@@ -53,6 +55,8 @@ After the keys are generated the directory will look like this:
 - `personal` and `personal.pub`
 - `work` and `work.pub`
 
+---
+
 ### Add keys to SSH Agent
 
 After this the keys need to be added to the SSH agent using the commands:
@@ -63,6 +67,8 @@ ssh-add -K ~/.ssh/work
 ```
 
 The public key needs to be added to GitHub, so that it will recognize the user. To do this use this link (https://github.com/settings/keys) and give it a title.
+
+---
 
 ### Making SSH config file
 
@@ -88,4 +94,23 @@ Host work
     IdentityFile ~/.ssh/work
 ```
 
+---
 
+### Using git to clone repositories
+The last step is to clone a repository from GitHub:
+```
+git clone git@personal:GitHub_user/repo.git
+git clone git@work:GitHub_user/repo.git
+```
+
+
+Every time you want to push using `git` to repositories, the file `./.git/config` has to be configured with the following commands:
+```
+git config --local user.name "personal_github_username" && git config --local user.email "personal_github_user_email"
+git config --local user.name "work_github_username" && git config --local user.email "work_github_user_email"
+```
+
+This is to have commits that are attributed your account, therefore, each line should be run in the repositories that your respective GitHub accounts have access to. These commands can be made into an `alias` for convenience, my personal `alias` is `gcp` (git config personal) for example.
+
+
+If there are any problems with this tutorial please alert me to them!
