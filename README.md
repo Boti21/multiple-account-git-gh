@@ -49,16 +49,18 @@ Now make an `ssh` config file:
 
 Into it, the profiles should put:
 
-```# Personal
+```
+# Personal
 Host personal
     HostName github.com
     User git
-    IdentityFile ~/.ssh/personal```
+    IdentityFile ~/.ssh/personal
 
-`# Work`
-`Host work`
-    `HostName github.com`
-    `User git`
-    `IdentityFile ~/.ssh/work`
+# Work
+Host work
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/work
+```
 
 
