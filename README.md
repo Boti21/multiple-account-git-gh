@@ -31,7 +31,7 @@ And the to navigate to the folder:
 ### Generate keys
 Some keys need to be generated in order to verify user identity.
 
-This is done with the command:
+This is done with the commands:
 
 `ssh-keygen -t rsa -C "email_github_personal@mail.com" -f "personal"`
 
@@ -43,11 +43,24 @@ After the keys are generated the directory will look like this:
 - `personal` and `personal.pub`
 - `work` and `work.pub`
 
+### Add keys to SSH Agent
+
+After this the keys need to be added to the SSH agent using the commands:
+
+```
+ssh-add -K ~/.ssh/personal
+ssh-add -K ~/.ssh/work
+```
+
+The public key needs to be added to GitHub, so that it will recognize the user. To do this use this link (https://github.com/settings/keys) and give it a title.
+
+### Making SSH config file
+
 Now make an `ssh` config file:
 
 `touch ~/.ssh/config`
 
-Into it, the profiles should put:
+Into it, the profiles should be put:
 
 ```
 # Personal
