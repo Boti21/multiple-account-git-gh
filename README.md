@@ -9,8 +9,6 @@
 For example if you use the same computer for your personal projects and therefore, account, as well as, for work projects, where you have to use an account associated with an organization, having the ability to easily toggle between accounts can be a great time-saver. At the very least, that was my motivation.
 
 
---
-
 
 ## Setting up SSH for authorization
 This is like logging in, just in a slightly more complicated way.
@@ -47,15 +45,15 @@ After the keys are generated the directory will look like this:
 
 Now make an `ssh` config file:
 
-`~/.ssh/config`
+`touch ~/.ssh/config`
 
 Into it, the profiles should put:
 
-`# Personal`
-`Host personal`
-    `HostName github.com`
-    `User git`
-    `IdentityFile ~/.ssh/personal`
+```# Personal
+Host personal
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/personal```
 
 `# Work`
 `Host work`
