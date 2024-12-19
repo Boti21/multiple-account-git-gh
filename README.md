@@ -9,27 +9,15 @@ For example if you use the same computer for your personal projects and therefor
 ## Setting up SSH for authorization
 This is like logging in, just in a slightly more complicated way.
 To start you should make a config folder for `ssh`.
-- Linux or MacOS
 
 ```
     mkdir ~/.ssh
 ```
-- Windows
-
-```
-    mkdir ~/AppData/.ssh
-```
 
 And the to navigate to the folder:
-- Linux or MacOs
 
 ```
     cd ~/.ssh
-```
-- Windows
-
-```
-    cd ~/AppData/.ssh
 ```
 
 ---
@@ -45,6 +33,8 @@ ssh-keygen -t rsa -C "<personal email used for GH>@mail.com" -f "<personal accou
 ssh-keygen -t rsa -C "<work email used for GH>@mail.com" -f "<work account name or an alias>"
 ```
 
+This command will prompt you for a passphrase but this can be ignored by pressing Enter 2 times.
+
 
 After the keys are generated the directory will look like this:
 - `<personal account name or an alias>` and `<personal account name or an alias>.pub`
@@ -58,17 +48,11 @@ From this point on I will refer to `<personal account name or an alias>` as `per
 
 After this the keys need to be added to the SSH agent using the commands:
 
-Linux and MacOS:
 ```
 ssh-add -K ~/.ssh/personal
 ssh-add -K ~/.ssh/work
 ```
 
-Windows:
-```
-ssh-add -K ~/AppData/.ssh/personal
-ssh-add -K ~/.ssh/work
-```
 Naturally Windows might need some extra attention. A problem I am aware of is that OpenSSH (the SSH client on your computer) might not be running and has to be started.
 
 The public key needs to be added to GitHub, so that it will recognize the user. To do this use this link (https://github.com/settings/keys) and give it a title.
@@ -83,9 +67,9 @@ Linux and MacOS:
 ```
 touch ~/.ssh/config
 ```
-Windows:
+Windows (Powershell):
 ```
-echo ~/.ssh>config
+New-Item -Path "~\.ssh\config" -ItemType File 
 ```
 
 Into it, the profiles should be put:
@@ -111,13 +95,13 @@ Windows:
 Host personal
     HostName github.com
     User git
-    IdentityFile ~/AppData/.ssh/personal
+    IdentityFile ~\.ssh\personal
 
 # Work (this line is also a comment)
 Host work
     HostName github.com
     User git
-    IdentityFile ~/AppData/.ssh/work
+    IdentityFile ~\.ssh\work
 ```
 
 ---
