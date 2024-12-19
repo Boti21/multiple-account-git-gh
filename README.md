@@ -40,27 +40,36 @@ Some keys need to be generated in order to verify user identity.
 This is done with the commands:
 
 ```
-ssh-keygen -t rsa -C "email_github_personal@mail.com" -f "personal"
+ssh-keygen -t rsa -C "<personal email used for GH>@mail.com" -f "<personal account name or an alias>"
 
-ssh-keygen -t rsa -C "email_github_work@mail.com" -f "work"
+ssh-keygen -t rsa -C "<work email used for GH>@mail.com" -f "<work account name or an alias>"
 ```
 
-Here `personal` and `work` can be named anything to distinguish them and will be the name of the files holding the keys.
 
 After the keys are generated the directory will look like this:
-- `personal` and `personal.pub`
-- `work` and `work.pub`
+- `<personal account name or an alias>` and `<personal account name or an alias>.pub`
+- `<work account name or an alias>` and `<work account name or an alias>.pub`
 
+From this point on I will refer to `<personal account name or an alias>` as `personal` and to 
+`<work account name or an alias>` as `work`.
 ---
 
 ### Add keys to SSH Agent
 
 After this the keys need to be added to the SSH agent using the commands:
 
+Linux and MacOS:
 ```
 ssh-add -K ~/.ssh/personal
 ssh-add -K ~/.ssh/work
 ```
+
+Windows:
+```
+ssh-add -K ~/AppData/.ssh/personal
+ssh-add -K ~/.ssh/work
+```
+Naturally Windows might need some extra attention. A problem I am aware of is that OpenSSH (the SSH client on your computer) might not be running and has to be started.
 
 The public key needs to be added to GitHub, so that it will recognize the user. To do this use this link (https://github.com/settings/keys) and give it a title.
 
@@ -70,24 +79,45 @@ The public key needs to be added to GitHub, so that it will recognize the user. 
 
 Now make an `ssh` config file:
 
+Linux and MacOS:
 ```
 touch ~/.ssh/config
+```
+Windows:
+```
+echo ~/.ssh>config
 ```
 
 Into it, the profiles should be put:
 
+Linux and MacOS:
 ```
-# Personal
+# Personal (this line is a comment)
 Host personal
     HostName github.com
     User git
     IdentityFile ~/.ssh/personal
 
-# Work
+# Work (this line is also a comment)
 Host work
     HostName github.com
     User git
     IdentityFile ~/.ssh/work
+```
+
+Windows:
+```
+# Personal (this line is a comment)
+Host personal
+    HostName github.com
+    User git
+    IdentityFile ~/AppData/.ssh/personal
+
+# Work (this line is also a comment)
+Host work
+    HostName github.com
+    User git
+    IdentityFile ~/AppData/.ssh/work
 ```
 
 ---
@@ -109,4 +139,3 @@ git config --local user.name "work_github_username" && git config --local user.e
 This is to have commits that are attributed your account, therefore, each line should be run in the repositories that your respective GitHub accounts have access to. These commands can be made into an `alias` for convenience, my personal `alias` is `gcp` (git config personal) for example.
 
 
-### If there are any problems with this tutorial please alert me to them!
